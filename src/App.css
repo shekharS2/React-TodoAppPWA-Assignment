@@ -1,38 +1,181 @@
-.App {
-  text-align: center;
+.app {
+	box-sizing: border-box;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #282c34;
+	overflow: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-container {
+	display: flex;
+	height: 88vh;
+	width: 90%;
+	border: 1px splid grey;
+	flex-direction: column;
+	align-items: center;
+	font-size: 1rem;
+	color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.add-todo {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 80%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.add-todo input {
+	width: 40%;
+	padding: 0.7rem;
+	margin: 0.7rem;
+	border-radius: 0.4rem;
+	border: none;
+	outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+	border: none;
+	padding: 0.7rem;
+	margin: 0.7rem;
+	border-radius: 0.4rem;
+	width: 20%;
+	background-color: #786fa6;
+	color: aliceblue;
+	cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:hover {
+	background-color: #574b90;
+}
+
+.all-todos {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.todos-empty {
+	text-align: center;
+	background-color: aliceblue;
+	padding: 10%;
+	border-radius: 0.4rem;
+}
+
+.each-todo {
+	border-radius: 0.4rem;
+	margin: 0.5rem;
+	border: 0.08rem solid aliceblue;
+	background-color: #574b90;
+	width: 28.33%;
+	display: flex;
+	flex-direction: column;
+}
+
+.todo-heading {
+	display: flex;
+	background-color: #282c34;
+	margin: 0;
+	padding: 1rem;
+	border-top-left-radius: 0.4rem;
+	border-top-right-radius: 0.4rem;
+}
+
+.todo-heading h2 {
+	flex: 1;
+}
+
+.todo-text-info {
+	padding: 0 1rem;
+}
+
+.checkbox-container {
+	display: flex;
+	border-top: 1px solid aliceblue;
+	padding: 0.2rem 1.2rem 1rem 1rem;
+	
+}
+
+.checkbox-label {
+	flex: 1;
+}
+
+.checkbox {
+	height: 1.6rem;
+	width: 1.6rem;
+	cursor: pointer;
+	align-self: flex-end;
+
+}
+
+.todo-filters {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.each-filter {
+	font-size: 1.2rem;
+	padding: 0.5rem 0.5rem;
+	cursor: pointer;
+	text-align: center;
+	border: 1px solid aliceblue;
+	min-height: 1rem; /*5rem */
+}
+
+.active {
+	font-weight: bold;
+	cursor: default;
+}
+
+@media (max-width: 441px) {
+	.each-filter {
+		font-size: 0.8rem;
+	}
+	.each-todo {
+		width: 70%;		
+	}
+	
+	.todo-text-info {
+		text-overflow: clip;
+		
+	}
+}
+
+@media (max-width: 489px) {
+	.each-filter {
+		font-size: 0.8rem;
+	}
+	
+	.each-todo {
+		font-size: 0.7rem;
+		
+	}
+
+	button {
+		text-align: center;
+		font-size: 0.7rem;
+	}
+}
+
+@media (max-width: 315px) {
+	.each-filter {
+		font-size: 0.8rem;
+		min-height: 3.5rem;
+	}
+	
+	.each-todo {
+		font-size: 0.7rem;
+	}
+
+	button {
+		text-align: center;
+		font-size: 0.7rem;
+	}
 }
