@@ -1,33 +1,21 @@
-import { useState } from 'react';
-import { v4 as uuid } from 'uuid';
-
+import { useEffect, useState } from 'react';
 import NewTodo from './components/NewTodo';
 import Todos from './components/Todos';
 
 import './App.css';
 
-function App() {
-	const [todos, updateTodos] = useState([
-		// {
-		// 	id: uuid(),
-		// 	name : "Task 1",
-        //     finishDate: "2022-11-02",
-		// 	isComplete: true
-		// },
-		// {
-		// 	id: uuid(),
-		// 	name : "Task 2",
-        //     finishDate: "2022-11-01",
-		// 	isComplete: false
-		// },
-		// {
-		// 	id: uuid(),
-		// 	name : "Task 3",
-        //     finishDate: "2022-11-05",
-		// 	isComplete: false
-		// }
-	]);
+//get data from local storage
+const getLocalItems = () => {
+  let todosStrData = localStorage.getItem('todos');
+  if(todosStrData) {
+    return JSON.parse(todosStrData);
+  } else {
+    return [];
+  }
+}
 
+function App() {
+	const [todos, updateTodos] = useState(getLocalItems());
 	const [completeFilterOn, updateCompleteFilterOn] = useState(false);
 	const [incompleteFilterOn, updateIncompleteFilterOn] = useState(false);
 	const [filteredTodos, updateFilteredTodos] = useState([]);
@@ -52,7 +40,13 @@ function App() {
 		updateCompleteFilterOn(false);
 		updateIncompleteFilterOn(false);
 	}
-		
+	
+  //add todos to local storage
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos])
+  
+
 	return <>
 		<div className='app'>
 			<div className='app-container'>
